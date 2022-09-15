@@ -5,7 +5,7 @@ import { colors } from '../utils/colors';
 import ImagePicker from 'react-native-image-crop-picker';
 import timePickerScreen from './timePicker';
 
-const imagePickerScreen = ({navigation}) => {
+export const imagePickerScreen = ({navigation}) => {
     const [imagePath, setImagePath] = useState("../assets/heart_and_soul.jpg");
     const imagePickerFun = () => {
         ImagePicker.openPicker({
@@ -67,5 +67,3 @@ const styles = StyleSheet.create({
         width: 240,
     },
 });
-
-export default imagePickerScreen;

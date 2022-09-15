@@ -4,7 +4,7 @@ import { colors } from '../utils/colors';
 import imagePickerScreen from './imagePicker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
-const timePickerScreen = ({navigation}) => {
+export const timePickerScreen = ({navigation}) => {
     const [date, setDate] = useState(new Date);
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
@@ -68,5 +68,3 @@ const styles = StyleSheet.create({
         alignContent: "center",
     },
 });
-
-export default timePickerScreen;

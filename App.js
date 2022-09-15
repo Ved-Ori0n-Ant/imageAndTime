@@ -9,8 +9,8 @@ export default App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      <Stack.Screen name="Select Image" children={imagePickerScreen} />
       <Stack.Screen name="Select Time" children={timePickerScreen} />
+      <Stack.Screen name="Select Image" children={imagePickerScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
