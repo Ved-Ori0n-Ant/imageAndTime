@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { fontSizes, spacing } from '../utils/sizes';
 import { colors } from '../utils/colors';
 import ImagePicker from 'react-native-image-crop-picker';
 import timePickerScreen from './timePicker';
 
 const imagePickerScreen = ({navigation}) => {
-    const [image, setImage] = useState("../assets/heart_and_soul.jpg");
+    const [imagePath, setImagePath] = useState("../assets/heart_and_soul.jpg");
     const imagePickerFun = () => {
         ImagePicker.openPicker({
-            croppingImageMaxWidth: 300,
-            croppingImageMaxHeight: 400,
+            croppingImageMaxWidth: 180,
+            croppingImageMaxHeight: 240,
             cropping: true
           }).then(image => {
             console.log(image);
-            setImage(image.path);
+            setImagePath(image.path);
           });
     }
     return(
@@ -22,15 +22,15 @@ const imagePickerScreen = ({navigation}) => {
             <View style = {styles.imgContainer}>
                 <Image 
                     style = {styles.img}
-                    source = {image}
+                    source = {{imagePath}}
                 />
             </View>
-            <Pressable onPress={imagePickerFun()} style = {styles.btn}>
+            <TouchableOpacity onPress={imagePickerFun()} style = {styles.btn}>
                 <Text style = {styles.text}>Pick the image!!</Text>
-            </Pressable>
-            <Pressable onPress={navigation.navigate(timePickerScreen)} style = {styles.btn}>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={navigation.navigate(timePickerScreen())} style = {styles.btn}>
                 <Text style = {styles.text}>Pick the time!!</Text>
-            </Pressable>
+            </TouchableOpacity>
         </View>
     );
 };
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.navyBlue,
     },
     btn: {
-        color: colors.secondary,
+        color: colors.white,
         flex: 1,
         justifyContent: "center",
         alignContent: "center",
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     text: {
         margin: spacing.sm,
         fontSize: fontSizes.md,
-        color: colors.primary,
+        color: colors.white,
     },
     imgContainer: {
         flex: 1,
@@ -59,6 +59,12 @@ const styles = StyleSheet.create({
         borderColor: colors.gray,
         color: colors.white,
         padding: spacing.sm,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    img: {
+        height: 180,
+        width: 240,
     },
 });
 

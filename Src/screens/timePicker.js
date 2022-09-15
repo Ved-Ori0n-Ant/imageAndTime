@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, Platform } from 'react-native';
+import { Pressable, StyleSheet, Platform, View, Text } from 'react-native';
 import { colors } from '../utils/colors';
 import imagePickerScreen from './imagePicker';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -8,7 +8,7 @@ const timePickerScreen = ({navigation}) => {
     const [date, setDate] = useState(new Date);
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
-    const [text, setText] = useState('');
+    const [text, setText] = useState('Empty');
 
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
@@ -28,8 +28,9 @@ const timePickerScreen = ({navigation}) => {
     }
 
     return (
-      <>
+      <View>
         <View>
+            <Text>{text}</Text>
             <Pressable onPress={() => showMode('time')} style={styles.btn}>
                 <Text>Pick the time!!</Text>
             </Pressable>
@@ -43,7 +44,7 @@ const timePickerScreen = ({navigation}) => {
                 value={date}
                 mode={mode}
                 is24Hour={true}
-                display='spinner'
+                display='default'
                 onChange={onChange}
             />)}
 
@@ -55,7 +56,7 @@ const timePickerScreen = ({navigation}) => {
             <Text style={styles.text}>Pick the image!!</Text>
           </Pressable>
         </View>
-      </>
+      </View>
     );
 };
 
