@@ -5,7 +5,7 @@ import { colors } from '../utils/colors';
 import ImagePicker from 'react-native-image-crop-picker';
 import timePickerScreen from './timePicker';
 
-export const imagePickerScreen = ({navigation}) => {
+const ImagePickerScreen = ({navigation}) => {
     const [imagePath, setImagePath] = useState("../assets/heart_and_soul.jpg");
     const imagePickerFun = () => {
         ImagePicker.openPicker({
@@ -28,12 +28,14 @@ export const imagePickerScreen = ({navigation}) => {
             <TouchableOpacity onPress={imagePickerFun()} style = {styles.btn}>
                 <Text style = {styles.text}>Pick the image!!</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={navigation.navigate(timePickerScreen())} style = {styles.btn}>
+            <TouchableOpacity onPress={navigation.navigate("SelectTime")} style = {styles.btn}>
                 <Text style = {styles.text}>Pick the time!!</Text>
             </TouchableOpacity>
         </View>
     );
 };
+
+export default ImagePickerScreen;
 
 const styles = StyleSheet.create({
     container: {

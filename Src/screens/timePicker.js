@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Pressable, StyleSheet, Platform, View, Text } from 'react-native';
 import { colors } from '../utils/colors';
-import imagePickerScreen from './imagePicker';
+import ImagePickerScreen from './imagePicker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
-export const timePickerScreen = ({navigation}) => {
+const TimePickerScreen = ({navigation}) => {
     const [date, setDate] = useState(new Date);
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
@@ -51,7 +51,7 @@ export const timePickerScreen = ({navigation}) => {
         </View>
         <View>
           <Pressable
-            onPress={navigation.navigate(imagePickerScreen)}
+            onPress={navigation.navigate("SelectImage")}
             style={styles.btn}>
             <Text style={styles.text}>Pick the image!!</Text>
           </Pressable>
@@ -59,6 +59,8 @@ export const timePickerScreen = ({navigation}) => {
       </View>
     );
 };
+
+export default TimePickerScreen;
 
 const styles = StyleSheet.create({
     btn: {
